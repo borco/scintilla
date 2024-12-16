@@ -22,9 +22,10 @@ jobs:
           run: |
             sudo apt update -y
             sudo apt install -y cargo make
-            cargo install --locked git-cinnabar
-
             echo "${HOME}/.cargo/bin" >> $GITHUB_PATH
+
+            cargo install --locked git-cinnabar
+            git cinnabar setup
 
         - name: sync with official
           env:
