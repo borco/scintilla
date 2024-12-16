@@ -8,7 +8,7 @@ on:
       - 'mirror'
     paths:
       - '.github/workflows/sync.yml'
-      - 'mirror.mk'
+  workflow_dispatch:
 
 jobs:
   sync-with-official-scintilla:
