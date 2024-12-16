@@ -56,3 +56,9 @@ jobs:
             git branch
             echo "Git tags:"
             git tag
+
+            echo "Store the official \"default/tip\" as the \"master\" branch..."
+            git push --force origin refs/remotes/official/branches/default/tip:master
+
+            echo "Store the remote tags..."
+            git push --tags
