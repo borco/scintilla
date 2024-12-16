@@ -38,7 +38,7 @@ jobs:
             echo "Git branches:"
             git branch
             echo "Git tags:"
-            git tags
+            git tag
             echo "Git remotes:"
             git remote -v
             echo "Files:"
@@ -55,4 +55,4 @@ jobs:
             echo "Git branches:"
             git branch
             echo "Git tags:"
-            git tags
+            git tag
