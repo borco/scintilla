@@ -20,8 +20,8 @@ jobs:
 
         - name: Install and configure git-cinnabar
           run: |
-            apt update -y
-            apt install -y cargo make
+            sudo apt update -y
+            sudo apt install -y cargo make
             cargo install --locked git-cinnabar
 
         - name: sync with official
