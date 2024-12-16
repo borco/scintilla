@@ -27,7 +27,7 @@ jobs:
             cargo install --locked git-cinnabar
             git cinnabar setup
 
-        - name: sync with official
+        - name: Sync with official
           env:
             GITHUB_TOKEN: ${{ secrets.GH_TOKEN_SCINTILLA }}
           run: |
