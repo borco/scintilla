@@ -18,17 +18,30 @@ jobs:
           run: |
             git clone --branch mirror --single-branch https://github.com/${GITHUB_REPOSITORY}.git
 
+        - name: Install and configure git-cinnabar
+          run: |
+            apt update -y
+            apt install -y cargo make
+            cargo install --locked git-cinnabar
+
         - name: sync with official
           env:
             GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           run: |
             cd scintilla
 
+            git config remote.origin.prune true
             git config user.name "auto-sync-with-official[bot]"
             git config user.email "auto-sync-with-official[bot]@users.noreply.github.com"
             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-            git branch
+
+            echo "Git current branch: `git branch --show-current`"
+            echo "Git remotes:"
             git remote -v
+            echo "Files:"
             ls -l
-            chmod a+x mirror.mk
-            ./mirror.mk
+
+            echo "Syncing..."
+            (git remote | grep -q official) || git remote add official hg::http://hg.code.sf.net/p/scintilla/code
+            git fetch official branches/default/tip:refs/remotes/official/branches/default/tip
+            git cinnabar fetch --tags
