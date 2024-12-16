@@ -9,20 +9,21 @@ on:
     paths:
       - '.github/workflows/sync.yml'
       - 'mirror.mk'
-      
+
 jobs:
   sync-with-official-scintilla:
-    runs-on: ubuntu-latest      
-    steps:    
+    runs-on: ubuntu-latest
+    steps:
         - name: Check out this repository
           run: |
             git clone --branch mirror --single-branch https://github.com/${GITHUB_REPOSITORY}.git
-              
+
         - name: sync with official
           env:
-            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}        
+            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           run: |
             cd scintilla
+
             git config user.name "auto-sync-with-official[bot]"
             git config user.email "auto-sync-with-official[bot]@users.noreply.github.com"
             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
