@@ -35,7 +35,10 @@ jobs:
             git config user.email "auto-sync-with-official[bot]@users.noreply.github.com"
             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
-            echo "Git current branch: `git branch --show-current`"
+            echo "Git branches:"
+            git branch
+            echo "Git tags:"
+            git tags
             echo "Git remotes:"
             git remote -v
             echo "Files:"
@@ -45,3 +48,11 @@ jobs:
             (git remote | grep -q official) || git remote add official hg::http://hg.code.sf.net/p/scintilla/code
             git fetch official branches/default/tip:refs/remotes/official/branches/default/tip
             git cinnabar fetch --tags
+
+            echo "Git tags:"
+            git tags
+
+            echo "Git branches:"
+            git branch
+            echo "Git tags:"
+            git tags
