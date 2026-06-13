@@ -1,5 +1,10 @@
 # Scintilla unofficial automatic mirror
 
+> 🚫 **Note (2026-06-13)**: this mirror is unmaintained/superseded —
+> [pyside6-scintilla](https://github.com/borco/pyside6-scintilla) vendors
+> Scintilla release tarballs directly instead of using this mirror as a
+> submodule.
+
 This is an **unofficial** automatic mirror for the <http://hg.code.sf.net/p/scintilla/code> mercurial repo of the [Scintilla](https://www.scintilla.org/) project.
 
 * uses [git-cinnabar](https://github.com/glandium/git-cinnabar) to interact with the scintilla mercurial repo
